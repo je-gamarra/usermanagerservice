@@ -59,12 +59,6 @@ public class UserEntity {
     @Column("empresa")
     private String company;
     
-    //@Column("role")
-    //private String role; // Se convierte desde enum
-    
-    //@Column("status")
-    //private String status; // Se convierte desde enum
-    
     @Column("fecha_creacion")
     private LocalDateTime creationDate;
     

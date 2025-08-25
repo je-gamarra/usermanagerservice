@@ -1,7 +1,6 @@
 package co.com.janner.model.user.gateways;
 
 import co.com.janner.model.user.User;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserRepository {
@@ -19,10 +18,6 @@ public interface UserRepository {
     Mono<Boolean> existsByEmail(String email);
 
     Mono<Boolean> existsByDocumentNumber(String documentNumber);
-
-    //Flux<User> findByRole(UserRole role);
-
-    //Mono<User> updateStatus(String userId, UserStatus status);
 
     Mono<Void> deleteById(Long id);
 
