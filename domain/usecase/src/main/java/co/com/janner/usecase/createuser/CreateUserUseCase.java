@@ -12,7 +12,6 @@ import reactor.core.publisher.Mono;
 public class CreateUserUseCase {
 
     private final UserRepository userRepository;
-    //private final NotificationGateway notificationGateway;
     
     public Mono<User> execute(User user) {
         return validateUserData(user)
@@ -57,23 +56,12 @@ public class CreateUserUseCase {
     private Mono<User> createUser(User user) {
         User newUser = user.toBuilder()
                 .userId(UUID.randomUUID().toString())
-                //.role(UserRole.SOLICITANTE) // Por defecto, todos son solicitantes
-                //.status(UserStatus.ACTIVE)
                 .creationDate(LocalDateTime.now())
                 .updateDate(LocalDateTime.now())
                 .build();
         
         return userRepository.save(newUser);
     }
-    
-    // private Mono<User> sendWelcomeNotification(User user) {
-    //     return notificationGateway.sendWelcomeEmail(user)
-    //             .then(Mono.just(user))
-    //             .onErrorResume(error -> {
-    //                 log.warn("Error enviando notificación de bienvenida: {}", error.getMessage());
-    //                 return Mono.just(user); // No fallar el caso de uso por error de notificación
-    //             });
-    // }
 }
 
 
